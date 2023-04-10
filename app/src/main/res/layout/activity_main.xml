@@ -13,8 +13,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="36dp"
         android:ems="10"
+        android:hint="@string/texto"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,19 +22,25 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="20dp"
+        android:background="#55C6DA"
+        android:onClick="Guardar"
         android:text="@string/boton1"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/button2"
-        tools:layout_editor_absoluteY="461dp" />
+        app:layout_constraintTop_toBottomOf="@+id/et2" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="64dp"
+        android:layout_width="150dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="60dp"
         android:text="@string/boton2"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="461dp" />
+        app:layout_constraintTop_toBottomOf="@+id/et2" />
 
     <EditText
         android:id="@+id/et2"
@@ -42,6 +48,7 @@
         android:layout_height="323dp"
         android:layout_marginStart="52dp"
         android:layout_marginTop="16dp"
+        android:background="#73B7E4"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
