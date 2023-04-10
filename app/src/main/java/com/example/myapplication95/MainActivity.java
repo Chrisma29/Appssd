@@ -10,9 +10,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.nio.Buffer;
 
 public class MainActivity extends AppCompatActivity {
     private EditText et1,et2;
@@ -48,6 +51,31 @@ public class MainActivity extends AppCompatActivity {
             et2.setText("");
         }catch (IOException e){
             Toast.makeText(this, "No se pudo guardar el archivo", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    //Metodo para consultar
+    public void consultar(View view){
+        String nombre = et1.getText().toString();
+
+        try{
+            File tarjetaSD = Environment.getExternalStorageDirectory();
+            File rutaArchivo = new File(tarjetaSD.getPath(), nombre);
+            InputStreamReader abrirArchivo = new InputStreamReader(openFileInput(nombre));
+            BufferedReader leerArchivo = new BufferedReader(abrirArchivo);
+            String linea = leerArchivo.readLine();
+            String contenidoCompleto = "";
+
+            while (linea != null) {
+                contenidoCompleto += linea + "\n";
+                linea = leerArchivo.readLine();
+            }
+            leerArchivo.close();
+            abrirArchivo.close();
+            et2.setText(contenidoCompleto);
+
+        }catch (IOException e){
+            Toast.makeText(this, "No se ha encontrado el archivo", Toast.LENGTH_SHORT).show();
         }
     }
 }
